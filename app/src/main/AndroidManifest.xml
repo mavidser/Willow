@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mavidser.willow" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainMenu"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
+        <activity
+            android:name=".PlayGame"
+            android:label="@string/title_activity_play_game"
+            android:parentActivityName=".MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mavidser.willow.MainMenu" />
+        </activity>
+        <activity
+            android:name=".GameResult"
+            android:label="@string/title_activity_game_result" >
+        </activity>
+        <activity
+            android:name=".TutorialActivity"
+            android:label="@string/title_activity_tutorial" >
+        </activity>
+        <activity
+            android:name=".CoverActivity"
+            android:label="@string/title_activity_cover" >
+        </activity>
+        <activity
+            android:name=".FragmentImageQuestion"
+            android:label="@string/title_activity_fragment_image_question" >
+        </activity>
+        <activity
+            android:name=".FragmentTextMCQuestion"
+            android:label="@string/title_activity_fragment_text_mcquestion" >
+        </activity>
+    </application>
+
+</manifest>
