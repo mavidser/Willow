@@ -9,6 +9,7 @@
 
     <TextView android:text="Question" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/abc_text_size_large_material"
         android:layout_alignParentTop="true"
         android:id="@+id/text_question"/>
 

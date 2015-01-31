@@ -16,13 +16,6 @@
         android:padding="20dp"
         android:layout_alignParentTop="true">
 
-        <EditText
-            android:hint="Enter username"
-            android:text="test1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/username" />
-
         <Button
             android:background="@color/light_blue_400"
             android:textColor="@color/grey_50"
@@ -31,7 +24,7 @@
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Play"
+            android:text="@string/title_activity_play_game"
             android:id="@+id/button_play"
             android:layout_gravity="center_horizontal"
             android:onClick="play" />
@@ -44,7 +37,7 @@
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Tutorial"
+            android:text="@string/title_activity_tutorial"
             android:id="@+id/button_tutorial"
             android:layout_gravity="center_horizontal"
             android:onClick="tutorial" />
@@ -57,11 +50,18 @@
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Practice"
+            android:text="@string/title_activity_practice"
             android:id="@+id/button_practice"
             android:layout_gravity="center_horizontal"
             android:onClick="practice" />
 
     </LinearLayout>
+
+    <EditText
+        android:hint="@string/entername"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username" />
 
 </RelativeLayout>

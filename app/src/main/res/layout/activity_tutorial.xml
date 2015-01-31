@@ -1,77 +1,70 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="mavidser.willow.TutorialActivity">
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin" tools:context="mavidser.willow.TutorialActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tutorial"
-        android:textSize="@dimen/abc_text_size_display_1_material"
-        android:id="@+id/tutorial_heading_view"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Q) Sample Question"
-        android:id="@+id/question_id"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:textStyle="italic"
-        android:layout_marginTop="85dp"
-        android:layout_below="@+id/tutorial_heading_view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ans) Lorem Ipsum BLA BLA BLA"
-        android:id="@+id/answer_id"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:layout_marginTop="39dp"
-        android:layout_below="@+id/question_id"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:padding="20dp"
+    android:layout_alignParentTop="true">
 
     <Button
         android:background="@color/light_blue_400"
         android:textColor="@color/grey_50"
         android:padding="20dp"
+        android:layout_margin="10dp"
         android:textSize="@dimen/abc_text_size_large_material"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Next Question >"
-        android:id="@+id/next_question_button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="74dp" />
+        android:text="@string/level1"
+        android:id="@+id/tut_level_1"
+        android:layout_gravity="center_horizontal"
+        android:onClick="tutorial" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remarks :"
-        android:textStyle="bold"
+    <Button
+        android:background="@color/light_blue_400"
+        android:textColor="@color/grey_50"
+        android:padding="20dp"
+        android:layout_margin="10dp"
         android:textSize="@dimen/abc_text_size_large_material"
-        android:id="@+id/remarks_id"
-        android:layout_below="@+id/answer_id"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="81dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/level2"
+        android:id="@+id/tut_level_2"
+        android:layout_gravity="center_horizontal"
+        android:onClick="tutorial" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Some remarks"
+    <Button
+        android:background="@color/light_blue_400"
+        android:textColor="@color/grey_50"
+        android:padding="20dp"
+        android:layout_margin="10dp"
         android:textSize="@dimen/abc_text_size_large_material"
-        android:id="@+id/remark_content_id"
-        android:layout_alignTop="@+id/remarks_id"
-        android:layout_alignLeft="@+id/tutorial_heading_view"
-        android:layout_alignStart="@+id/tutorial_heading_view" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/level3"
+        android:id="@+id/tut_level_3"
+        android:layout_gravity="center_horizontal"
+        android:onClick="tutorial" />
+
+    <Button
+        android:background="@color/light_blue_400"
+        android:textColor="@color/grey_50"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/level4"
+        android:id="@+id/tut_level_4"
+        android:layout_gravity="center_horizontal"
+        android:onClick="tutorial" />
+</LinearLayout>
 </RelativeLayout>

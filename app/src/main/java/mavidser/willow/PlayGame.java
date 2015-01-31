@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -12,7 +13,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +32,16 @@ import org.json.JSONObject;
 
 public class PlayGame extends ActionBarActivity {
     String username,match;
-    int level,CURRENT_QUESTION=-1,xp=0,opponent_xp=0;
+    int level,CURRENT_QUESTION=-1,xp=0,opponent_xp=0,quesLeft=11,timeLeft=0;
+    String ANS="";
     ProgressDialog pd;
+    TextView score,opposcore;
     FragmentTransaction ft;
     FragmentImageQuestion iFragment = new FragmentImageQuestion();
     FragmentTextMCQuestion tFragment = new FragmentTextMCQuestion();
     GameResult rFragment = new GameResult();
     JSONArray obj;
+    CountDownTimer CDtimer;
 
 
     private Socket mSocket;
@@ -58,12 +65,14 @@ public class PlayGame extends ActionBarActivity {
         mSocket.connect();
         System.out.println(username);
         mSocket.emit("connectUser", username);
-            mSocket.emit("questions", "test");
-            mSocket.on("message", response);
+//            mSocket.emit("questions", "test");
+//            mSocket.on("message", response);
         getMatch();
         mSocket.on("receiveMatchingUser", matchReceived);
         mSocket.on("userDisconnected", userDisconnected);
         setContentView(R.layout.activity_play_game);
+        score = (TextView) findViewById(R.id.play_user_score);
+        opposcore = (TextView) findViewById(R.id.play_opponent_score);
     }
 
 
@@ -76,13 +85,14 @@ public class PlayGame extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == android.R.id.home) {
+//            Intent upIntent = NavUtils.getParentActivityIntent(this);
+            onBackPressed();
             return true;
         }
 
@@ -91,12 +101,7 @@ public class PlayGame extends ActionBarActivity {
 
     @Override
     public void onDestroy() {
-//        mSocket.emit("haha", username);
         super.onDestroy();
-//        mSocket.emit("haha", username);
-        mSocket.disconnect();
-        mSocket.off("receiveMatchingUser", matchReceived);
-        mSocket.off("userDisconnected",userDisconnected);
     }
 
     private void getMatch() {
@@ -110,23 +115,36 @@ public class PlayGame extends ActionBarActivity {
         pd=new ProgressDialog(this);
 
         pd.setIndeterminate(true);
-//        pd.setProgressStyle(pd.STYLE_HORIZONTAL);
-//        pd.setMax(100);
-//        pd.setProgress(0);
-        pd.setMessage("Waiting for a match");
+        pd.setMessage(getString(R.string.waiting_for_a_match));
         pd.setCancelable(true);
         pd.setOnCancelListener(new DialogInterface.OnCancelListener()
         {
             @Override
             public void onCancel(DialogInterface dialog)
             {
-//                onBackPressed();
+                onBackPressed();
                 pd.cancel();
             }
         });
 
 try {        pd.show();}catch (Exception e) {}
     }
+
+
+    private Emitter.Listener oppoxp = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    int xp = (int) args[0];
+                    System.out.println("xp here " + xp);
+                    opposcore.setText(xp + "");
+                }
+            });
+        }
+    };
 
     private Emitter.Listener matchReceived = new Emitter.Listener() {
         @Override
@@ -146,10 +164,30 @@ try {        pd.show();}catch (Exception e) {}
                     } catch (Exception e) {}
                 }
             });
-//            mSocket.emit("questions", "test");
-//            mSocket.on("message", response);
+            mSocket.emit("questions", "test");
+            mSocket.on("message", response);
+            mSocket.on("oppoxp",oppoxp);
         }
     };
+
+    private void startTheGame() {
+        CDtimer = new CountDownTimer(6000, 100) {
+            @Override
+            public void onTick(long leftTimeInMilliseconds) {
+                timeLeft = (int)leftTimeInMilliseconds;
+                TextView timer = (TextView) findViewById(R.id.timer);
+                        timer.setText(""+(leftTimeInMilliseconds/1000));
+
+            }
+            @Override
+            public void onFinish() {
+                if(quesLeft>0) {
+                    answer(null);
+                    startTheGame();
+                }
+            }
+        }.start();
+    }
 
     private Emitter.Listener userDisconnected = new Emitter.Listener() {
         @Override
@@ -173,33 +211,13 @@ try {        pd.show();}catch (Exception e) {}
                 @Override
                 public void run() {
 
-//                    System.out.println("HI");
                     try {
-//                        int i=0;
                         String json = (String)args[0];
                         obj = new JSONArray(json);
-//                        for(int i=0;i<obj.length();i++) {
-//                            Bundle data = new Bundle();
-//                        System.out.println("THE QUESTSION IS "+obj.getJSONObject(CURRENT_QUESTION).getString("q"));
-//                            data.putString("question", obj.getJSONObject(CURRENT_QUESTION).getString("q"));
-//                            data.putString("ad", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("a").getString("desc"));
-//                            data.putString("bd", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("b").getString("desc"));
-//                            data.putString("cd", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("c").getString("desc"));
-//                            data.putString("dd", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("d").getString("desc"));
-//                            try {
-//                                data.putString("ai", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("a").getString("url"));
-//                                data.putString("bi", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("b").getString("url"));
-//                                data.putString("ci", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("c").getString("url"));
-//                                data.putString("di", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("d").getString("url"));
-//                            }catch (Exception e){}
-//                            iFragment.setArguments(data);
-                            answer(null);
-//                        }
+                        startTheGame();
+                        answer(null);
                     } catch (JSONException e) {
-
-
                         System.err.println(e);
-
                         return;
                     }
                 }
@@ -223,11 +241,56 @@ try {        pd.show();}catch (Exception e) {}
     }
 //
     public void answer(View view) {
-//        System.out.println("IJFLJLFKFLK");
+
+
+        String user_ans=null;
+        if(view!=null) {
+
+
+            System.out.println(ANS + " ANS");
+            switch (view.getId()) {
+                case R.id.text_a:
+                case R.id.iai:
+                    user_ans = "a";
+                    break;
+                case R.id.text_b:
+                case R.id.ibi:
+                    user_ans = "b";
+                    break;
+                case R.id.text_c:
+                case R.id.ici:
+                    user_ans = "c";
+                    break;
+                case R.id.text_d:
+                case R.id.idi:
+                    user_ans = "d";
+                    break;
+            }
+            System.out.println(user_ans+" ans");
+
+            if (ANS.equalsIgnoreCase(user_ans))
+                xp += (int)((timeLeft)*50/6000);
+            score.setText(xp+"");
+
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("id", username);
+                obj.put("xp", xp);
+            } catch (Exception e) {};
+            mSocket.emit("answerPressed",obj);
+
+            CDtimer.cancel();
+            if(quesLeft>0)
+                CDtimer.start();
+        }
+
 
         Bundle data = new Bundle();
         try{
-            data.putString("question", obj.getJSONObject(++CURRENT_QUESTION).getString("q")); data.putString("question", obj.getJSONObject(CURRENT_QUESTION).getString("q"));
+            ANS = obj.getJSONObject(++CURRENT_QUESTION).getString("ans");
+            System.out.println(obj.getJSONObject(CURRENT_QUESTION).getString("ans")
+             + " haha " + obj.getJSONObject(CURRENT_QUESTION).getString("q"));
+            data.putString("question", obj.getJSONObject(CURRENT_QUESTION).getString("q")); data.putString("question", obj.getJSONObject(CURRENT_QUESTION).getString("q"));
             data.putString("ad", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("a").getString("desc"));
             data.putString("bd", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("b").getString("desc"));
             data.putString("cd", obj.getJSONObject(CURRENT_QUESTION).getJSONObject("c").getString("desc"));
@@ -248,17 +311,10 @@ try {        pd.show();}catch (Exception e) {}
 
             } catch (Exception e) {
 
-//            try {
-//                ft.remove(iFragment);
-//            } catch (Exception xe) {}
-
                 try {tFragment.setArguments(data);}
                 catch(Exception ce){tFragment.setUIArguments(data);}
 
             }
-
-//            iFragment.setArguments(data);
-//            tFragment.setArguments(data);
             putQuestionInFragment(CURRENT_QUESTION);
         } catch (Exception e) {
             System.err.println(e);
@@ -268,10 +324,28 @@ try {        pd.show();}catch (Exception e) {}
             ft.disallowAddToBackStack();
             ft.commit();
         }
+
+        quesLeft--;
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try{CDtimer.cancel();}catch (Exception e){}
+        mSocket.disconnect();
+        mSocket.off("receiveMatchingUser", matchReceived);
+        mSocket.off("userDisconnected",userDisconnected);
+        mSocket.off("message",response);
+        mSocket.off("oppoxp",oppoxp);
+        finish();
     }
 
     @Override
     public void onBackPressed() {
+        System.out.println("back!");
+        try {CDtimer.cancel();}
+        catch(Exception e) {}
         finish();
     }
 }

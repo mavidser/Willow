@@ -41,16 +41,41 @@
                 android:id="@+id/play_user_score" />
         </LinearLayout>
 
-
-
-        <TextView android:text="VS" android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+        <TextView android:text="5"
+            android:textColor="@color/grey_400"
+            android:id="@+id/timer"
+            android:gravity="center"
+            android:background="@drawable/circle_bg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:textSize="@dimen/abc_text_size_large_material"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+
+
+
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/barTimer"-->
+            <!--android:max="100"-->
+            <!--style="?android:attr/progressBarStyleHorizontal"-->
+            <!--android:layout_weight="1"-->
+            <!--android:padding="34dp"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="69dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:progressDrawable="@drawable/circular_progres_bar"-->
+            <!--android:layout_gravity="center_horizontal" />-->
 
 
 
@@ -78,7 +103,7 @@
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/play_user_score" />
+                android:id="@+id/play_opponent_score" />
 
         </LinearLayout>
     </LinearLayout>

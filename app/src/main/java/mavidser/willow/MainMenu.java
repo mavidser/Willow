@@ -1,9 +1,14 @@
 package mavidser.willow;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +33,40 @@ public class MainMenu extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        EditText message = (EditText) findViewById(R.id.username);
+        final String username = message.getText().toString();
+
+        final SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        message.setText(prefs.getString("name", "sid"));
+
+
+        message.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count)
+            {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                prefs.edit().putString("name", s.toString()).commit();
+            }
+        });
+
+
+
+    }
+    private void randomString() {
 
     }
 

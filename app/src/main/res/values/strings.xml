@@ -2,18 +2,26 @@
 <resources>
 
     <string name="app_name">Willow</string>
+    <string name="level1">Level 1</string>
+    <string name="level2">Level 2</string>
+    <string name="level3">Level 3</string>
+    <string name="level4">Level 4</string>
+    <string name="level5">Level 5</string>
     <string name="hello_world">Hello world!</string>
     <string name="hindi_hindi">हिन्दी</string>
     <string name="telugu_telugu">తెలుగు</string>
     <string name="bengali_bengali">বিংগালী</string>
     <string name="english_english">English</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">सेट्टिंग्स</string>
     <string name="title_activity_main_menu">Willow</string>
-    <string name="title_activity_play_game">Play</string>
+    <string name="title_activity_play_game">खेलिए</string>
     <string name="title_activity_game_result">GameResult</string>
-    <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_tutorial">शिक्षण</string>
+    <string name="title_activity_practice">अभ्यास</string>
+    <string name="waiting_for_a_match">प्रतीक्षा कीजिए</string>
     <string name="title_activity_cover">CoverActivity</string>
     <string name="title_activity_fragment_image_question">FragmentImageQuestion</string>
     <string name="title_activity_fragment_text_mcquestion">FragmentTextMCQuestion</string>
+    <string name="entername">आपका नाम</string>
 
 </resources>
