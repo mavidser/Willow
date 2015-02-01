@@ -32,7 +32,7 @@ import org.json.JSONObject;
 
 public class PlayGame extends ActionBarActivity {
     String username,match;
-    int level,CURRENT_QUESTION=-1,xp=0,opponent_xp=0,quesLeft=11,timeLeft=0;
+    int level,CURRENT_QUESTION=-1,xp=0,opponent_xp=0,quesLeft=10,timeLeft=0;
     String ANS="";
     ProgressDialog pd;
     TextView score,opposcore;
@@ -47,7 +47,7 @@ public class PlayGame extends ActionBarActivity {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.150.2:4000/");
+            mSocket = IO.socket("http://192.168.150.1:4000/");
         } catch (URISyntaxException e) {}
     }
 
@@ -268,8 +268,10 @@ try {        pd.show();}catch (Exception e) {}
             }
             System.out.println(user_ans+" ans");
 
-            if (ANS.equalsIgnoreCase(user_ans))
-                xp += (int)((timeLeft)*50/6000);
+            if (ANS.equalsIgnoreCase(user_ans)) {
+                xp += (int) ((timeLeft) * 50 / 6000);
+
+            }
             score.setText(xp+"");
 
             JSONObject obj = new JSONObject();

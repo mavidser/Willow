@@ -2,11 +2,11 @@
 <resources>
 
     <string name="app_name">Willow</string>
-    <string name="level1">Level 1</string>
-    <string name="level2">Level 2</string>
-    <string name="level3">Level 3</string>
-    <string name="level4">Level 4</string>
-    <string name="level5">Level 5</string>
+    <string name="level1">स्तर 1</string>
+    <string name="level2">स्तर 2</string>
+    <string name="level3">स्तर 3</string>
+    <string name="level4">स्तर 4</string>
+    <string name="level5">स्तर 5</string>
     <string name="hello_world">Hello world!</string>
     <string name="hindi_hindi">हिन्दी</string>
     <string name="telugu_telugu">తెలుగు</string>
@@ -23,5 +23,6 @@
     <string name="title_activity_fragment_image_question">FragmentImageQuestion</string>
     <string name="title_activity_fragment_text_mcquestion">FragmentTextMCQuestion</string>
     <string name="entername">आपका नाम</string>
+    <string name="rematch">फिरसे</string>
 
 </resources>

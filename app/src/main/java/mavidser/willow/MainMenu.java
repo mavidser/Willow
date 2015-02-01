@@ -40,7 +40,7 @@ public class MainMenu extends ActionBarActivity {
         final SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
 
-        message.setText(prefs.getString("name", "sid"));
+        message.setText(prefs.getString("name", ""));
 
 
         message.addTextChangedListener(new TextWatcher() {

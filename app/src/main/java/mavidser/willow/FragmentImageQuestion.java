@@ -117,7 +117,7 @@ public class FragmentImageQuestion extends Fragment {
 
                 final ImageButton aii = (ImageButton)myView.findViewById(R.id.iai);
 
-                URL url = new URL("http://192.168.150.2:4000/images/" + ai);
+                URL url = new URL("http://192.168.150.1:4000/images/" + ai);
 
                 final Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 //                aii.setImageBitmap(bmp);
@@ -125,21 +125,21 @@ public class FragmentImageQuestion extends Fragment {
 
                 final ImageButton bii = (ImageButton) myView.findViewById(R.id.ibi);
 
-                url = new URL("http://192.168.150.2:4000/images/" + bi);
+                url = new URL("http://192.168.150.1:4000/images/" + bi);
                 final Bitmap bmp2 = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 //                bii.setImageBitmap(bmp);
 
 
                 final ImageButton cii = (ImageButton) myView.findViewById(R.id.ici);
 
-                url = new URL("http://192.168.150.2:4000/images/" + ci);
+                url = new URL("http://192.168.150.1:4000/images/" + ci);
                 final Bitmap bmp3 = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 //                cii.setImageBitmap(bmp);
 
 
                 final ImageButton dii = (ImageButton) myView.findViewById(R.id.idi);
 
-                url = new URL("http://192.168.150.2:4000/images/" + di);
+                url = new URL("http://192.168.150.1:4000/images/" + di);
                 final Bitmap bmp4 = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 //                dii.setImageBitmap(bmp);
                 getActivity().runOnUiThread(new Runnable() {

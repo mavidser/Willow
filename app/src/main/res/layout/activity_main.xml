@@ -17,8 +17,9 @@
 
         <Button
             android:background="@color/light_blue_400"
+            android:elevation="2dp"
             android:textColor="@color/grey_50"
-            android:padding="20dp"
+            android:padding="15dp"
             android:layout_margin="10dp"
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
@@ -30,8 +31,9 @@
 
         <Button
             android:background="@color/light_blue_400"
+            android:elevation="2dp"
             android:textColor="@color/grey_50"
-            android:padding="20dp"
+            android:padding="15dp"
             android:layout_margin="10dp"
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
@@ -43,8 +45,9 @@
 
         <Button
             android:background="@color/light_blue_400"
+            android:elevation="2dp"
             android:textColor="@color/grey_50"
-            android:padding="20dp"
+            android:padding="15dp"
             android:layout_margin="10dp"
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"
@@ -56,8 +59,9 @@
 
         <Button
             android:background="@color/light_blue_400"
+            android:elevation="2dp"
             android:textColor="@color/grey_50"
-            android:padding="20dp"
+            android:padding="15dp"
             android:layout_margin="10dp"
             android:textSize="@dimen/abc_text_size_large_material"
             android:layout_width="fill_parent"

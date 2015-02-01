@@ -8,14 +8,14 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score"
-        android:textSize="@dimen/abc_text_size_display_1_material"
-        android:id="@+id/result_id"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Score"-->
+        <!--android:textSize="@dimen/abc_text_size_display_1_material"-->
+        <!--android:id="@+id/result_id"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <Button
         android:background="@color/light_blue_400"
@@ -25,7 +25,7 @@
         android:textSize="@dimen/abc_text_size_large_material"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="REMATCH"
+        android:text="@string/rematch"
         android:id="@+id/rematch_button"
         android:layout_marginTop="85dp"
         android:layout_below="@+id/result_id"
@@ -39,7 +39,7 @@
         android:textSize="@dimen/abc_text_size_large_material"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="TUTORIAL"
+        android:text="@string/title_activity_tutorial"
         android:id="@+id/tutorial_button"
         android:layout_below="@+id/rematch_button"
         android:layout_centerHorizontal="true"
@@ -53,7 +53,7 @@
         android:textSize="@dimen/abc_text_size_large_material"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="PRACTICE"
+        android:text="@string/title_activity_practice"
         android:id="@+id/practice_button"
         android:layout_below="@+id/tutorial_button"
         android:layout_centerHorizontal="true"
