@@ -1,3 +1,6 @@
 [submodule "Willow"]
 	path = Willow
 	url = https://github.com/mavidser/Willow.git
+[submodule "Willow-server"]
+	path = Willow-server
+	url = https://github.com/mavidser/Willow-server.git
